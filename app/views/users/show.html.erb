@@ -4,6 +4,10 @@
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
 
 <p>
   <strong>Gender:</strong>
@@ -18,8 +22,9 @@
 <p>
   <strong>Profile img:</strong>
   <%#= @user.profile_img %>
+  <div>
   <%= image_tag @user.profile_img.url if @user.profile_img? %>
-
+  </div>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
