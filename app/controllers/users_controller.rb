@@ -1,5 +1,5 @@
 class UsersController < InheritedResources::Base
-
+  #before_action :authenticate_user!
   private
 
     def user_params
