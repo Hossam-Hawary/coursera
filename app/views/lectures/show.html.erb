@@ -15,7 +15,7 @@
 
 <p>
   <strong>Course:</strong>
-  <%= @lecture.course.title %>
+  <%= @lecture.course.title if @lecture.course %>
 </p>
 
 <p>

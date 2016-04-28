@@ -9,7 +9,7 @@
 <body>
 <header>
   <% if current_user%>
-      <h4>Current User : <%= current_user.name%> - <%= current_user.email %> | <%= link_to 'Logout',destroy_user_session_path(343),method: :delete, data: {confirm: 'Are you sure?'}%>
+      <h4><%= current_user.name%> - <%= current_user.email %> | <%= link_to 'Logout',destroy_user_session_path,method: :delete, data: {confirm: 'Are you sure?'}%>
       </h4>
       <hr>
   <%else%>
@@ -19,6 +19,9 @@
       </h4>
   <%end%>
   <span><strong><%= link_to "Users",users_path%></strong></span>
+  <span><strong><%= link_to "Courses",courses_path%></strong></span>
+  <span><strong><%= link_to "Lectures",lectures_path%></strong></span>
+
 </header>
 <%= yield %>
 

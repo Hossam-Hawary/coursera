@@ -18,7 +18,7 @@
       <tr>
         <!--<td><%#= lecture.content %></td>-->
         <td><%= lecture.lec_file %></td>
-        <td><%= lecture.course.title %></td>
+        <td><%= lecture.course.title if lecture.course %></td>
         <td><%= lecture.user.name %></td>
         <td><%= link_to 'Show', lecture %></td>
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
