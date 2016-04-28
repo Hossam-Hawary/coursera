@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyString
+  lec_file: MyString
+  course_id: 
+  user_id: 
+
+two:
+  content: MyString
+  lec_file: MyString
+  course_id: 
+  user_id: 
