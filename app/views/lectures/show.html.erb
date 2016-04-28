@@ -2,12 +2,15 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @lecture.content %>
+  <div>
+    <%= @lecture.content.html_safe %>
+  </div>
 </p>
 
 <p>
   <strong>Lec file:</strong>
   <%= @lecture.lec_file %>
+  <%= link_to "Display",@lecture.lec_file.to_s%>
 </p>
 
 <p>

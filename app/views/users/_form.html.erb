@@ -33,7 +33,7 @@
     </div>
   <div class="field">
     <%= f.label :birthdate %><br>
-    <%= f.date_select :birthdate %>
+    <%= f.date_select :birthdate ,start_year: 1980%>
   </div>
     <span class="picture">
     <%= f.file_field :profile_img, accept: 'image/jpeg,image/gif,image/png' %>
