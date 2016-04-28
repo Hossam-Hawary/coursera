@@ -15,7 +15,7 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= course.title %></td>
-        <td><%= course.user.name %></td>
+        <td><%= course.user.name if course.user%></td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) if course.user==current_user%> </td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } if course.user==current_user%></td>
