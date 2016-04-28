@@ -21,8 +21,8 @@
         <td><%= lecture.course.title if lecture.course %></td>
         <td><%= lecture.user.name %></td>
         <td><%= link_to 'Show', lecture %></td>
-        <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
-        <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_lecture_path(lecture) if lecture.user==current_user%></td>
+        <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } if lecture.user==current_user%></td>
       </tr>
     <% end %>
   </tbody>

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   root 'courses#index'
+  # Example of regular route:
+    get 'lec_file/:lec_id' => 'lectures#download_file'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

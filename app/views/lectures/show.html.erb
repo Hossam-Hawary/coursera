@@ -11,6 +11,7 @@
   <strong>Lec file:</strong>
   <%= @lecture.lec_file %>
   <%= link_to "Display",@lecture.lec_file.to_s%>
+  <%=link_to "Download","/lec_file/"+@lecture.id.to_s%>
 </p>
 
 <p>

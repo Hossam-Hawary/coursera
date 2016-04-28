@@ -23,23 +23,11 @@
         <td><%= user.birthdate %></td>
         <!--<td><%#= user.profile_img %></td>-->
         <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% if current_user && current_user==user%>
-            <td>
-              logged in
-              <%= link_to 'Logout',destroy_user_session_path,method: :delete, data: {confirm: 'Are you sure?'}%>
-            </td>
-        <%else%>
-            <td>
-              <%= link_to 'Login',new_user_session_path%>
-            </td>
-        <%end%>
+        <td><%= link_to 'Edit', edit_user_path(user) if user==current_user%></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } if user==current_user%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>

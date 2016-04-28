@@ -1,6 +1,6 @@
 class CoursesController < InheritedResources::Base
   before_action :authenticate_user!
-
+  before_action :true_user, only: [:edit, :update, :destroy]
   def create
     @course = Course.new(course_params)
     @course.user_id=current_user.id
@@ -19,5 +19,9 @@ class CoursesController < InheritedResources::Base
     def course_params
       params.require(:course).permit(:title)
     end
+  def true_user
+    @user = Course.find(params[:id]).user
+    redirect_to root_path unless current_user.id == @user.id
+  end
 end
 
