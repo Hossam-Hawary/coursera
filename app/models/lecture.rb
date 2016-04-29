@@ -4,7 +4,7 @@ class Lecture < ActiveRecord::Base
   mount_uploader :lec_file, LecFileUploader
   validate  :lec_file_size
   validates :course_id, :presence => true
-
+  acts_as_votable
   private
   def lec_file_size
     if lec_file.size > 5.megabytes

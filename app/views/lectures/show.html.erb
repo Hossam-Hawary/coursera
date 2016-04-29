@@ -23,6 +23,21 @@
   <strong>User:</strong>
   <%= @lecture.user.name if @lecture.user%>
 </p>
+<% @lecture.liked_by current_user %>
+<% @lecture.disliked_by current_user %>
+<p>
+  <strong>Votes:</strong>
+  <%= @lecture.votes_for.size%>
+</p>
+<p>
+  <strong>Likes:</strong>
+  <%= @lecture.get_likes.size%>
+</p>
+<p>
+  <strong>Dislikes:</strong>
+  <%= @lecture.get_dislikes.size%>
+</p>
+
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
 <%= link_to 'Back', lectures_path %>

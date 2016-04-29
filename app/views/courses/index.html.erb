@@ -1,29 +1,55 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
-<h1>Listing Courses</h1>
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-after-navbar" id="header1-40" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw">
+  <div class="mbr-box__magnet mbr-box__magnet--sm-padding mbr-box__magnet--center-left">
+    <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(76, 105, 114);"></div>
+    <div class="mbr-box__container mbr-section__container container">
+      <div class="mbr-box mbr-box--stretched"><div class="mbr-box__magnet mbr-box__magnet--center-left">
+        <div class="row"><div class=" col-sm-6">
+          <div class="mbr-hero animated fadeInUp">
+            <h1 class="mbr-hero__text">Coursera</h1>
+            <p class="mbr-hero__subtext">Coursera is a project had been built usign Rouby On Rails Framework <br></p>
+          </div>
+      </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="mbr-arrow mbr-arrow--floating text-center">
+      <div class="mbr-section__container container">
+        <a class="mbr-arrow__link" href="#features1-44"><i class="glyphicon glyphicon-menu-down"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="content-2 col-4" id="features1-44" style="background-color: rgb(28, 73, 110);">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="container">
+    <div class="mbr-hero animated fadeInUp">
+    <h1 class="mbr-hero__text">All Courses </h1>
+      </div>
+    <div class="row">
+      <% @courses.each do |course| %>
+          <div>
+            <div class="thumbnail">
+              <div class="image"><img class="undefined" src="/assets/images/maps-350x350-26.png"></div>
+              <div class="caption">
+                <div>
+                  <h3><%= course.title %></h3>
 
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.title %></td>
-        <td><%= course.user.name if course.user%></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) if course.user==current_user%> </td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } if course.user==current_user%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <p class="group">created by <%= link_to course.user.name , course.user,:class => "mbr-brand__name text-white" if course.user%></p>
+            <p class="group"><%= link_to 'Show', course ,:class=>"btn btn-info"%></p>
+            <p class="group"><%= link_to 'Edit', edit_course_path(course),:class=>"btn btn-warning" if course.user==current_user%> </p>
+            <p class="group"><%= link_to 'Destroy', course,{ method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"} if course.user==current_user%></p>
+                </div>
+              </div>
+            </div>
+         </div>
+      <% end %>
 
-<br>
+      <%= link_to 'Create New Course', new_course_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
 
-<%= link_to 'New Course', new_course_path %>
+
+    </div>
+  </div>
+</section>

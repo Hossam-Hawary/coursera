@@ -1,14 +1,57 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background" id="header1-43" style="background-image: url(/assets/images/iphone-926663-1920-1920x1280-94.jpg);">
+  <div class="mbr-box__magnet mbr-box__magnet--sm-padding mbr-box__magnet--center-left">
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(41, 105, 176);"></div>
+    <div class="mbr-box__container mbr-section__container container">
+      <div class="mbr-box mbr-box--stretched"><div class="mbr-box__magnet mbr-box__magnet--center-left">
+        <div class="row"><div class=" col-sm-6">
+          <div class="mbr-hero animated fadeInUp">
+            <h1 class="mbr-hero__text"><%= @course.title %></h1>
+            <p class="mbr-hero__subtext">Lectures: <%= @course.lectures.size %></p>
+            <p class="mbr-hero__subtext">This course created by
+              <strong><%= link_to @course.user.name , @course.user,:class => "mbr-buttons__link btn text-white" if @course.user%></strong>
+            </p>
+            <p>on <%= @course.created_at %></p>
+            <%= link_to 'Edit Course ', edit_course_path(@course),:class => "mbr-buttons__btn btn btn-lg animated fadeInUp delay btn-warning" if @course.user==current_user%>
+          </div>
+        </div></div>
+      </div></div>
+    </div>
+    <div class="mbr-arrow mbr-arrow--floating text-center">
+      <div class="mbr-section__container container">
+        <a class="mbr-arrow__link" href="#features1-44"><i class="glyphicon glyphicon-menu-down"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="content-2 col-4" id="features1-44" style="background-color: rgb(28, 73, 110);">
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+  <div class="container">
+    <div class="mbr-hero animated fadeInUp">
+      <h1 class="mbr-hero__text">All Lectures</h1>
+    </div>
+    <div class="row">
+      <% @course.lectures.each do |lecture| %>
+          <div>
+            <div class="thumbnail">
+              <h3>Lectre</h3>
+              <div class="image"><img class="undefined" src="/assets/images/chrome-remote-desktop-350x350-23.png"></div>
+              <div class="caption">
+                <div>
+                  <h6 class="group"><%= lecture.created_at %></h6>
 
-<p>
-  <strong>User:</strong>
-  <%= @course.user.name if @course.user %>
-</p>
+                  <p class="group">created by <%= link_to lecture.user.name , lecture.user,:class => "mbr-brand__name text-white" if lecture.user%></p>
+                  <p class="group"><%= link_to 'Show lecture', lecture ,:class=>"btn btn-info"%></p>
+                  <p class="group"><%= link_to 'Edit lecture', edit_lecture_path(lecture),:class=>"btn btn-warning" if lecture.user==current_user%> </p>
+                  <p class="group"><%= link_to 'Destroy lecture', lecture,{ method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"} if lecture.user==current_user%></p>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+      <%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
+
+    </div>
+  </div>
+</section>

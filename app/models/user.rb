@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validate  :profile_img_size
   validates :name, :presence => true
   validates :name,:uniqueness => true
-
+  acts_as_voter
   private
 
   # Validates the size of an uploaded picture.
