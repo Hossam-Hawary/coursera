@@ -1,5 +1,4 @@
 <!--<p id="notice"><%#= notice %></p>-->
-
 <section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-after-navbar" id="header1-40" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw">
   <div class="mbr-box__magnet mbr-box__magnet--sm-padding mbr-box__magnet--center-left">
     <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(76, 105, 114);"></div>
@@ -8,9 +7,12 @@
         <div class="row"><div class=" col-sm-6">
           <div class="mbr-hero animated fadeInUp">
             <h1 class="mbr-hero__text">Coursera</h1>
-            <p class="mbr-hero__subtext">Coursera is a project had been built usign Rouby On Rails Framework <br></p>
+            <p class="mbr-hero__subtext">Coursera is a project had been built usign Rouby On Rails Framework <br>
+                ALL YOU NEED IN ONE PLACE
+            </p>
           </div>
-      </div>
+          <div class="mbr-buttons btn-inverse mbr-buttons--left"><%= link_to 'Create New lecture', new_course_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %></div>
+        </div>
         </div>
       </div>
       </div>
@@ -35,10 +37,9 @@
               <div class="image"><img class="undefined" src="/assets/images/maps-350x350-26.png"></div>
               <div class="caption">
                 <div>
-                  <h3><%= course.title %></h3>
+                  <h3><p class="group"><%= link_to course.title, course ,:class=>"btn btn-info"%></p></h3>
 
             <p class="group">created by <%= link_to course.user.name , course.user,:class => "mbr-brand__name text-white" if course.user%></p>
-            <p class="group"><%= link_to 'Show', course ,:class=>"btn btn-info"%></p>
             <p class="group"><%= link_to 'Edit', edit_course_path(course),:class=>"btn btn-warning" if course.user==current_user%> </p>
             <p class="group"><%= link_to 'Destroy', course,{ method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"} if course.user==current_user%></p>
                 </div>
@@ -47,9 +48,7 @@
          </div>
       <% end %>
 
-      <%= link_to 'Create New Course', new_course_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
-
-
     </div>
+    <%= link_to 'Create New Course', new_course_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
   </div>
 </section>

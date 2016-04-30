@@ -34,14 +34,12 @@
       <% @course.lectures.each do |lecture| %>
           <div>
             <div class="thumbnail">
-              <h3>Lectre</h3>
+              <p class="group"><%= link_to 'Show lecture', lecture ,:class=>"btn btn-info"%></p>
               <div class="image"><img class="undefined" src="/assets/images/chrome-remote-desktop-350x350-23.png"></div>
               <div class="caption">
                 <div>
                   <h6 class="group"><%= lecture.created_at %></h6>
-
                   <p class="group">created by <%= link_to lecture.user.name , lecture.user,:class => "mbr-brand__name text-white" if lecture.user%></p>
-                  <p class="group"><%= link_to 'Show lecture', lecture ,:class=>"btn btn-info"%></p>
                   <p class="group"><%= link_to 'Edit lecture', edit_lecture_path(lecture),:class=>"btn btn-warning" if lecture.user==current_user%> </p>
                   <p class="group"><%= link_to 'Destroy lecture', lecture,{ method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"} if lecture.user==current_user%></p>
                 </div>
@@ -49,9 +47,7 @@
             </div>
           </div>
       <% end %>
-
-      <%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
-
     </div>
+    <%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
   </div>
 </section>

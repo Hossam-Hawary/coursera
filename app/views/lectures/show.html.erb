@@ -1,43 +1,67 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Content:</strong>
-  <div>
-    <%= @lecture.content.html_safe %>
+<!--<p id="notice"><%#= notice %></p>-->
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="social-buttons1-87" style="background-color: rgb(247, 218, 100);">
+  <div class="mbr-section__container container">
+    <div class="mbr-header mbr-header--inline row">
+      <br>
+      <br>
+    </div>
   </div>
-</p>
+</section>
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="form1-89" style="background-color: rgb(239, 239, 239);">
 
-<p>
-  <strong>Lec file:</strong>
-  <%= @lecture.lec_file %>
-  <%= link_to "Display",@lecture.lec_file.to_s%>
-  <%=link_to "Download","/lec_file/"+@lecture.id.to_s%>
-</p>
+  <div class="mbr-section__container mbr-section__container--std-padding container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2" data-form-type="formoid">
+            <div class="mbr-header mbr-header--center mbr-header--std-padding">
+              <h1>
+                <strong>Course Title:</strong>
+                <input type="hidden" value=<%= @lecture.id%> id="lec_id">
+                <%= link_to @lecture.course.title , @lecture.course ,:class=>"btn btn-info" if @lecture.course%>
+              </h1>
+              <h2 class="mbr-header__text"> LECTURE CONTENT</h2>
+            </div>
+        </div>
+      </div>
+        <div class="row" style="word-wrap: break-word;">
+          <%= @lecture.content.html_safe %>
+        </div>
+    </div>
+  </div>
+    <hr style="background-color: white;height: 4px">
 
-<p>
-  <strong>Course:</strong>
-  <%= @lecture.course.title if @lecture.course %>
-</p>
+    <% if !@lecture.lec_file.blank?  %>
+        <div class="row">
+        <%= link_to "Display Lecture File",@lecture.lec_file.to_s ,:class=>"btn btn-info" %>
+      <%=link_to "Download","/lec_file/"+@lecture.id.to_s ,:class=>"btn btn-info" %>
+        </div>
+        <hr style="background-color: white;height: 4px">
+  <%end%>
 
-<p>
-  <strong>User:</strong>
-  <%= @lecture.user.name if @lecture.user%>
-</p>
-<% @lecture.liked_by current_user %>
-<% @lecture.disliked_by current_user %>
-<p>
-  <strong>Votes:</strong>
-  <%= @lecture.votes_for.size%>
-</p>
-<p>
-  <strong>Likes:</strong>
-  <%= @lecture.get_likes.size%>
-</p>
-<p>
-  <strong>Dislikes:</strong>
-  <%= @lecture.get_dislikes.size%>
-</p>
+    <div class="row">
+      created by: <%= link_to @lecture.user.name , @lecture.user,:class => "btn btn-info" if @lecture.user%>
+      <%= link_to 'Edit lecture', edit_lecture_path(@lecture),:class=>"btn btn-warning" if @lecture.user==current_user%>
+      <%= link_to 'Destroy lecture', @lecture,{ method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"} if @lecture.user==current_user%>
+    </div>
+    <hr style="background-color: white;height: 4px">
+    <p>
+      <strong id="likes">
+      <%= @lecture.get_likes.size%> Likes
+      </strong>
+
+      <strong id="dislikes">
+      <%= @lecture.get_dislikes.size%> Dislikes
+      </strong>
+    </p>
+    <button id="like_but" class="btn btn-info">Like</button>
+    <button id="dislike_but" class="btn btn-danger">Dislike</button>
+  </div>
+</section>
+<script src="/assets/lecture_page.js"></script>
 
 
-<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
-<%= link_to 'Back', lectures_path %>
+<%# @lecture.liked_by current_user %>
+<%# @lecture.disliked_by current_user %>
+<%#= @lecture.get_likes.size%>
+<%#= @lecture.get_dislikes.size%>

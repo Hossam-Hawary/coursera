@@ -1,31 +1,66 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<section class="mbr-section mbr-section--relative mbr-parallax-background" id="msg-box5-46" style="background-image: url(/assets/images/iphone-6-458150-1920-1920x1285-73.jpg);">
+  <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 168, 133);"></div>
+  <div class="mbr-section__container mbr-section__container--isolated container">
+    <div class="row">
+      <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+        <div class="mbr-box__magnet mbr-box__magnet--top-right mbr-section__left col-sm-6">
+          <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width">  <%= image_tag @user.profile_img.url ,:calss=>"mbr-figure__img" if @user.profile_img? %></figure>
+        </div>
+        <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
+          <div class="mbr-section__container mbr-section__container--middle">
+            <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+              <h3 class="mbr-header__text">Username: <%= @user.name %></h3>
+              <h3 class="mbr-header__text">Email: <%= @user.email %></h3>
+              <h3 class="mbr-header__text">Gender: <%= @user.gender %></h3>
+              <h3 class="mbr-header__text">Date Of Birth: <%= @user.birthdate %></h3>
+            </div>
+          </div>
+          <div class="mbr-section__container mbr-section__container--middle">
+            <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"></div>
+          </div>
+          <div class="mbr-buttons btn-inverse mbr-buttons--left">
+            <a class="mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" href="#features1-44">Show Courses </a>
+            <%= link_to 'Edit Profile', edit_user_path(@user),:class => "mbr-buttons__btn btn btn-lg animated fadeInUp delay btn-warning"  if @user==current_user%>
+            <%= link_to 'Delete Profile', @user, method: :delete, data: { confirm: 'Are you sure?' },:class => "mbr-buttons__btn btn btn-lg animated fadeInUp delay btn-danger" if @user==current_user%>
+          </div>
+        </div>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>Birthdate:</strong>
-  <%= @user.birthdate %>
-</p>
-
-<p>
-  <strong>Profile img:</strong>
-  <%#= @user.profile_img %>
-  <div>
-  <%= image_tag @user.profile_img.url if @user.profile_img? %>
+      </div>
+    </div>
+    <div class="mbr-arrow mbr-arrow--floating text-center">
+      <div class="mbr-section__container container">
+        <a class="mbr-arrow__link" href="#features1-44"><i class="glyphicon glyphicon-menu-down"></i></a>
+      </div>
+    </div>
   </div>
-</p>
+</section>
+<section class="content-2 col-4" id="features1-44" style="background-color: rgb(28, 73, 110);">
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <div class="container">
+    <div class="mbr-hero animated fadeInUp">
+      <h1 class="mbr-hero__text">User Courses  </h1>
+    </div>
+    <div class="row">
+      <% @user.courses.each do |course| %>
+          <div>
+            <div class="thumbnail">
+              <div class="image"><img class="undefined" src="/assets/images/maps-350x350-26.png"></div>
+              <div class="caption">
+                <div>
+                  <h3><%= course.title %></h3>
+                  <p class="group"><%= link_to 'Show', course ,:class=>"btn btn-info"%></p>
+                  <p class="group"><%= link_to 'Edit', edit_course_path(course),:class=>"btn btn-warning"  if @user==current_user%> </p>
+                  <p class="group"><%= link_to 'Destroy', course,{ method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"} if @user==current_user%> </p>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+
+    </div>
+    <%= link_to 'Create New Course', new_course_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
+  </div>
+</section>
+

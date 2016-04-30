@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   root 'courses#index'
   # Example of regular route:
     get 'lec_file/:lec_id' => 'lectures#download_file'
+    get 'like_lec/:lec_id' => 'lectures#like_lecture'
+    get 'dislike_lec/:lec_id' => 'lectures#dislike_lecture'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

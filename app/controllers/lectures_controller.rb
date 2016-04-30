@@ -18,6 +18,23 @@ class LecturesController < InheritedResources::Base
       end
     end
   end
+  def like_lecture
+    lecture=Lecture.find(params[:lec_id])
+    lecture.liked_by current_user
+    lec_likes=lecture.get_likes.size
+    lec_dislikes=lecture.get_dislikes.size
+    vots={likes:lec_likes,dislikes:lec_dislikes}
+    render :json => vots
+
+  end
+  def dislike_lecture
+    lecture=Lecture.find(params[:lec_id])
+    lecture.disliked_by current_user
+    lec_likes=lecture.get_likes.size
+    lec_dislikes=lecture.get_dislikes.size
+    vots={likes:lec_likes,dislikes:lec_dislikes}
+    render :json => vots
+  end
   private
 
     def lecture_params
