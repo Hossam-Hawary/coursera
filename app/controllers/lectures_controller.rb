@@ -20,20 +20,33 @@ class LecturesController < InheritedResources::Base
   end
   def like_lecture
     lecture=Lecture.find(params[:lec_id])
-    lecture.liked_by current_user
-    lec_likes=lecture.get_likes.size
-    lec_dislikes=lecture.get_dislikes.size
+    lecture.liked_by current_user,:vote_scope => 'rank'
+    lec_likes=lecture.get_likes(:vote_scope => 'rank').size
+    lec_dislikes=lecture.get_dislikes(:vote_scope => 'rank').size
     vots={likes:lec_likes,dislikes:lec_dislikes}
     render :json => vots
 
   end
   def dislike_lecture
     lecture=Lecture.find(params[:lec_id])
-    lecture.disliked_by current_user
-    lec_likes=lecture.get_likes.size
-    lec_dislikes=lecture.get_dislikes.size
+    lecture.disliked_by current_user,:vote_scope => 'rank'
+    lec_likes=lecture.get_likes(:vote_scope => 'rank').size
+    lec_dislikes=lecture.get_dislikes(:vote_scope => 'rank').size
     vots={likes:lec_likes,dislikes:lec_dislikes}
     render :json => vots
+  end
+  def spam_lecture
+    lecture=Lecture.find(params[:lec_id])
+    lecture.downvote_from current_user, :vote_scope => 'spam'
+    lec_spam=lecture.get_downvotes(:vote_scope => 'spam').size
+    vots={removed?:false,spam:0}
+    if lec_spam>5
+      lecture.destroy
+      vots[:removed?]=true
+    end
+    vots[:spam]=lec_spam
+    render :json => vots
+
   end
   private
 

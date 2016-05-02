@@ -5,7 +5,7 @@ class UsersController < InheritedResources::Base
   private
 
     def user_params
-      params.require(:user).permit(:name, :gender, :birthdate, :profile_img,:email,:password)
+      params.require(:user).permit(:name, :gender, :birthdate, :profile_img,:email,:password,:password_confirmation)
     end
   def true_user
     @user = User.find(params[:id])

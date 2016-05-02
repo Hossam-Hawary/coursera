@@ -1,4 +1,5 @@
 <!--<p id="notice"><%#= notice %></p>-->
+<link rel="stylesheet" href="/assets/lecture.css" type="text/css">
 <section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="social-buttons1-87" style="background-color: rgb(247, 218, 100);">
   <div class="mbr-section__container container">
     <div class="mbr-header mbr-header--inline row">
@@ -47,19 +48,24 @@
     <hr style="background-color: white;height: 4px">
     <p>
       <strong id="likes">
-      <%= @lecture.get_likes.size%> Likes
+      <%= @lecture.get_likes(:vote_scope => 'rank').size%> Likes
       </strong>
 
       <strong id="dislikes">
-      <%= @lecture.get_dislikes.size%> Dislikes
+      <%= @lecture.get_dislikes(:vote_scope => 'rank').size%> Dislikes
+      </strong>
+      <strong id="spams">
+        <%= @lecture.get_downvotes(:vote_scope => 'spam').size%> Spam
       </strong>
     </p>
     <button id="like_but" class="btn btn-info">Like</button>
-    <button id="dislike_but" class="btn btn-danger">Dislike</button>
+    <button id="dislike_but" class="btn btn-warning">Dislike</button>
+    <button id="spam_but" class="btn btn-danger">Report Spam</button>
   </div>
+  <hr style="background-color: white;height: 4px">
+  <%= commontator_thread(@lecture) %>
 </section>
 <script src="/assets/lecture_page.js"></script>
-
 
 <%# @lecture.liked_by current_user %>
 <%# @lecture.disliked_by current_user %>

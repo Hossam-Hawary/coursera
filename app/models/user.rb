@@ -6,10 +6,14 @@ class User < ActiveRecord::Base
   mount_uploader :profile_img, PictureUploader
   has_many :lectures, :dependent => :delete_all
   has_many :courses, :dependent => :delete_all
-  validate  :profile_img_size
-  validates :name, :presence => true
+  validate :profile_img_size
+  validates :name,:password_confirmation,:gender,:presence => true
   validates :name,:uniqueness => true
+  validates_confirmation_of :password
+  validates_inclusion_of :gender, in: %w( male female )
+  validates_length_of :name, within: 3..15, too_long: 'pick a shorter name', too_short: 'pick a longer name'
   acts_as_voter
+  acts_as_commontator
   private
 
   # Validates the size of an uploaded picture.

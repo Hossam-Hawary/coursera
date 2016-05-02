@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     get 'lec_file/:lec_id' => 'lectures#download_file'
     get 'like_lec/:lec_id' => 'lectures#like_lecture'
     get 'dislike_lec/:lec_id' => 'lectures#dislike_lecture'
+    get 'spam_lec/:lec_id' => 'lectures#spam_lecture'
+    mount Commontator::Engine => '/commontator'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
