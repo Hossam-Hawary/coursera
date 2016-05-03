@@ -28,7 +28,7 @@
                 <div class="form-group">
                   <%= f.label :course_id %><br>
                   <%#= f.text_field :course_id %>
-                  <%= collection_select(:lecture, :course_id,current_user.courses, :id, :title, {:prompt => false},:class => 'form-control') %>
+                  <%= collection_select(:lecture, :course_id,current_user.courses, :id, :title, :selected => session[:course_id]  ,:prompt => false,:class => 'form-control') %>
                 </div>
                 <div class="form-group">
                   <%= f.label :lec_file %><br>

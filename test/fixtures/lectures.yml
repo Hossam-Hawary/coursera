@@ -2,7 +2,7 @@
 
 one:
   content: MyString
-  lec_file: MyString
+  lec_file:
   course_id: 
   user_id: 
 

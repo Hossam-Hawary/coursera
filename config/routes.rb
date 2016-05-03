@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users
   root 'courses#index'
   # Example of regular route:
-    get 'lec_file/:lec_id' => 'lectures#download_file'
+    get 'lec_file/:lec_id' => 'lectures#download_file' ,as:'download_lec'
     get 'like_lec/:lec_id' => 'lectures#like_lecture'
     get 'dislike_lec/:lec_id' => 'lectures#dislike_lecture'
     get 'spam_lec/:lec_id' => 'lectures#spam_lecture'

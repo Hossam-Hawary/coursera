@@ -1,6 +1,7 @@
 class CoursesController < InheritedResources::Base
   before_action :authenticate_user!
-  before_action :true_user, only: [:edit, :update, :destroy]
+  before_action :varifay_user, only: [:edit, :update, :destroy]
+  before_action :set_course_id,only: [:show]
   def create
     @course = Course.new(course_params)
     @course.user_id=current_user.id
@@ -19,9 +20,12 @@ class CoursesController < InheritedResources::Base
     def course_params
       params.require(:course).permit(:title)
     end
-  def true_user
+  def varifay_user
     @user = Course.find(params[:id]).user
     redirect_to root_path unless current_user.id == @user.id
+  end
+  def set_course_id
+    session[:course_id]=params[:id]
   end
 end
 

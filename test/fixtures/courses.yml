@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-invalid:
-  title: MyString
+valid_course:
+  title: MyCourse
   user_id: 

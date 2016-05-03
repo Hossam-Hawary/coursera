@@ -48,7 +48,7 @@
           </div>
       <% end %>
     </div>
-    <%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
+    <%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay"  if @course.user==current_user%>
   </div>
 </section>
 <%= get_disqus_sso.html_safe%>
