@@ -3,6 +3,7 @@ class CoursesController < InheritedResources::Base
   before_action :varifay_user, only: [:edit, :update, :destroy]
   load_and_authorize_resource
   before_action :set_course_id,only: [:show]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_course
   def create
     @course = Course.new(course_params)
     @course.user_id=current_user.id
@@ -27,6 +28,10 @@ class CoursesController < InheritedResources::Base
   end
   def set_course_id
     session[:course_id]=params[:id]
+  end
+  def invalid_course
+    logger.error "Attempt to access invalid Course #{params[:id]}"
+    redirect_to courses_path, notice: 'Invalid course'
   end
 end
 

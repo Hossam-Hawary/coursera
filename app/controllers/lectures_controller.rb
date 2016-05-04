@@ -2,6 +2,7 @@ class LecturesController < InheritedResources::Base
   before_action :authenticate_user!
   before_action :varifay_user, only: [:edit, :update, :destroy]
   load_and_authorize_resource
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_lecture
   def download_file
     lecture=Lecture.find(params[:lec_id])
     send_file lecture.lec_file.path
@@ -57,9 +58,13 @@ class LecturesController < InheritedResources::Base
     def lecture_params
       params.require(:lecture).permit(:content, :lec_file, :course_id)
     end
+  def invalid_lecture
+    logger.error "Attempt to access invalid Lectrue #{params[:id]}"
+    redirect_to lectures_path, notice: 'Invalid Lecture'
+  end
   def varifay_user
     @user = Lecture.find(params[:id]).user
-    redirect_to root_path unless current_user.id == @user.id
+    redirect_to lectures_path unless current_user.id == @user.id
   end
 
   end
