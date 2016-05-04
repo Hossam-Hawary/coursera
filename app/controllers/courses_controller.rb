@@ -1,6 +1,7 @@
 class CoursesController < InheritedResources::Base
   before_action :authenticate_user!
   before_action :varifay_user, only: [:edit, :update, :destroy]
+  load_and_authorize_resource
   before_action :set_course_id,only: [:show]
   def create
     @course = Course.new(course_params)

@@ -11,6 +11,7 @@ gem 'fog'
 gem 'ckeditor_rails'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'commontator'
+gem 'cancancan', '~> 1.10'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

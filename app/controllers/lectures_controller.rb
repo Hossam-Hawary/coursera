@@ -1,6 +1,7 @@
 class LecturesController < InheritedResources::Base
   before_action :authenticate_user!
   before_action :varifay_user, only: [:edit, :update, :destroy]
+  load_and_authorize_resource
   def download_file
     lecture=Lecture.find(params[:lec_id])
     send_file lecture.lec_file.path
@@ -8,6 +9,9 @@ class LecturesController < InheritedResources::Base
   def create
     @lecture = Lecture.new(lecture_params)
     @lecture.user_id=current_user.id
+    if @lecture.course.user!=current_user
+      redirect_to root_path
+    end
     respond_to do |format|
       if @lecture.save
         format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }

@@ -12,7 +12,9 @@
             All you need in one place
             </p>
           </div>
-          <div class="mbr-buttons btn-inverse mbr-buttons--left"><%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %></div>
+          <% if current_user.instractor? %>
+        <div class="mbr-buttons btn-inverse mbr-buttons--left"><%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %></div>
+       <% end %>
         </div></div>
       </div></div>
     </div>
@@ -47,6 +49,9 @@
       </div>
           <% end %>
     </div>
-    <%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
-  </div>
+    <% if current_user.instractor? %>
+
+  <%= link_to 'Create New lecture', new_lecture_path,:class=>"mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" %>
+  <% end %>
+        </div>
 </section>

@@ -67,6 +67,7 @@ GEM
       thor (~> 0.19)
     builder (3.2.2)
     byebug (8.2.4)
+    cancancan (1.13.1)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -367,6 +368,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
   byebug
+  cancancan (~> 1.10)
   carrierwave (= 0.10.0)
   ckeditor_rails
   coffee-rails (~> 4.1.0)

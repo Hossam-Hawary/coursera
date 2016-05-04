@@ -14,8 +14,15 @@ class User < ActiveRecord::Base
   validates_length_of :name, within: 3..15, too_long: 'pick a shorter name', too_short: 'pick a longer name'
   acts_as_voter
   acts_as_commontator
-  private
 
+  def instractor?
+    if self.role=="Instractor"
+      return true
+    else
+      return false
+    end
+  end
+  private
   # Validates the size of an uploaded picture.
   def profile_img_size
     if profile_img.size > 2.megabytes
