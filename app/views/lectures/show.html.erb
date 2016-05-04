@@ -35,7 +35,7 @@
     <% if !@lecture.lec_file.blank?  %>
         <div class="row">
         <%= link_to "Display Lecture File",@lecture.lec_file.to_s ,:class=>"btn btn-info" %>
-      <%=link_to "Download",download_lec_path(@lecture.id.to_s),:class=>"btn btn-info" %>
+      <%=link_to "Download",download_lec_path(@lecture),:class=>"btn btn-info" %>
         </div>
         <hr style="background-color: white;height: 4px">
   <%end%>

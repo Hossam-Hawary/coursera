@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   resources :users
   root 'courses#index'
   # Example of regular route:
-    get 'lec_file/:lec_id' => 'lectures#download_file' ,as:'download_lec'
-    get 'like_lec/:lec_id' => 'lectures#like_lecture'
-    get 'dislike_lec/:lec_id' => 'lectures#dislike_lecture'
-    get 'spam_lec/:lec_id' => 'lectures#spam_lecture'
+    get 'lectures/:lec_id/lec_file' => 'lectures#download_file' ,as:'download_lec'
+    get 'lectures/:lec_id/like_lec' => 'lectures#like_lecture',as:'like_lec'
+    get 'lectures/:lec_id/dislike_lec' => 'lectures#dislike_lecture',as:'dislike_lec'
+    get 'lectures//:lec_id/spam_lec' => 'lectures#spam_lecture',as:'spam_lec'
     mount Commontator::Engine => '/commontator'
 
 
