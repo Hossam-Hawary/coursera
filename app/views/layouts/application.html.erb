@@ -42,7 +42,7 @@
               <li class="mbr-navbar__item"><%= link_to "Lectures",lectures_path,{:class => "mbr-buttons__btn btn btn-default text-white"}%></li>
                 <% if current_user%>
                     <li class="mbr-navbar__item"> <%= link_to 'Logout',destroy_user_session_path,{:class => "mbr-buttons__btn btn btn-default text-white",method: :delete, data: {confirm: 'Are you sure?'}}%></li>
-                    <li class="mbr-navbar__item"><%= link_to current_user.name,edit_user_path(current_user),{:class => "mbr-buttons__link btn text-white"}%></a> </li>
+                    <li class="mbr-navbar__item"><%= link_to current_user.name,user_path(current_user),{:class => "mbr-buttons__link btn text-white"}%></a> </li>
 
                     <span class="mbr-brand__logo"><%= image_tag current_user.profile_img.url,:class => "mbr-navbar__brand-img mbr-brand__img" if current_user.profile_img? %></span>
 

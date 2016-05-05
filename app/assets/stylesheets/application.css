@@ -11,6 +11,17 @@
  * file per style scope.
  *=@import "bootstrap-sprockets";
  *=@import "bootstrap";
+ /*
+ * bootstrap.min
+ * animate.min
+ * animate.min
+ * socicon.min
+ * style
+ * slider-style
+ * galary-style
+ * mbr-additional
+
+
  *= require_tree .
  *= require_self
  */

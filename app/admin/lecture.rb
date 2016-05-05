@@ -4,7 +4,6 @@ ActiveAdmin.register Lecture do
   index do
     selectable_column
     id_column
-    column :content
     column :lec_file
     column :course_id
     column :user_id
