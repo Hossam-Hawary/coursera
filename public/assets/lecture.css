@@ -1,0 +1,53 @@
+.comment_avatar img{
+    width: 10%;
+    height: 20%;
+    float: left;
+}
+.thread_header{
+    letter-spacing:6px;
+    font-weight: bold;
+    font-size: x-large;
+}
+.comment{
+    border: 3px solid white;
+    border-radius:5px;
+    width:800px;
+    background-color:lavender;
+    margin-top:10px;
+    text-align:left;
+}
+.comment_timestamp{
+    clear: both;
+    font-style:italic;
+    padding:2px;
+    color:gray;
+    text-align:left;
+}
+.comment_body{
+    font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    font-size: 25px;
+    margin:10px;
+    color: #1b8bb9;
+
+}
+#comment_body{
+    width:500px;
+    height:100px;
+    border:1px solid silver;
+    border-radius:5px;
+    font-size:17px;
+    padding:10px;
+    font-family:helvetica;
+}
+.thread a{
+    background-color: #1b8bb9;
+    text-decoration:none;
+    font-weight:bold;
+    text-align:center;
+    vertical-align: middle;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    margin: 5px;
+    border-radius:5px;
+}
